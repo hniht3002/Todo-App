@@ -4,7 +4,6 @@ import "./App.css";
 import ToDo from "./ToDo";
 import image from "./todo-image.png";
 
-// We need to have a localStorage to not lose all values after refreshing the page
 
 const getLocalStorage = () => {
   let list = localStorage.getItem("list");
@@ -16,10 +15,10 @@ const getLocalStorage = () => {
 };
 
 function App() {
-  const [name, setName] = useState(""); // value that we'll use in our form / the empty value by default
-  const [list, setList] = useState(getLocalStorage()); // empty array that we'll use for local storage // local storage list
-  const [isEditing, setIsEditing] = useState(false); // a flag in a state whether is editing or not
-  const [editID, setEditID] = useState(null); // this state will reflect which ite is actually editing
+  const [name, setName] = useState(""); 
+  const [list, setList] = useState(getLocalStorage()); 
+  const [isEditing, setIsEditing] = useState(false); 
+  const [editID, setEditID] = useState(null); 
   const [alert, setAlert] = useState({
     show: false,
     msg: "",
@@ -91,14 +90,13 @@ function App() {
   return (
     <>
       <div>
-{/*         <h1 className="title-center">To-do list</h1> */}
         <section className="section-center">
-          <form className="todo-form" onSubmit={handleSubmit}>
-            {alert.show && (
+        {alert.show && (
               <Alert {...alert} removeAlert={showAlert} list={list} />
-            )}{" "}
-            {/* inside of alert component pass all the properties from state alert value */}
-            {/* show some checking for the proprety of show more specific for the value and if that is the case - display it // you can check it if you change useState for alert to show:true // The logical AND (&&) operator for a set of boolean operands will be true if and only if all the operands are true. Otherwise it will be false. */}
+            )}
+
+          <h3 className="title">Todo App</h3>
+          <form className="todo-form" onSubmit={handleSubmit}>
             <div className="form-control">
               <input
                 type="text"
@@ -108,8 +106,7 @@ function App() {
                 onChange={(e) => setName(e.target.value)}
               />
               <button type="submit" className="submit-btn">
-                {isEditing ? "edit" : "submit"}{" "}
-                {/* check if is editing and if is true than display edit, if not - submit (by default is false).  You can check it if you change useState for isEditing to true*/}
+                {isEditing ? "edit" : "add"}{" "}
               </button>
             </div>
           </form>
@@ -122,9 +119,6 @@ function App() {
               </button>
             </div>
           )}
-          <div className="img-container">
-            <img src={image} className="image" />
-          </div>
         </section>
       </div>
     </>

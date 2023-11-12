@@ -1,12 +1,6 @@
-/*
-=============== 
-Variables
-===============
-*/
-
 :root {
   /* dark shades of primary color*/
-  --main-yellow: #ffc727;
+  --main-yellow: #ffc527;
   --dark-yellow: #f4ae00;
   --main-red: red;
   --dark-red: rgb(125, 1, 1);
@@ -23,6 +17,7 @@ Variables
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --max-width: 1170px;
   --fixed-width: 620px;
+  --success: #2bff27;
 }
 /*
 =============== 
@@ -37,6 +32,11 @@ Global Styles
   padding: 0;
   box-sizing: border-box;
 }
+
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--main-yellow);
@@ -76,16 +76,6 @@ p {
   color: var(--clr-grey-5);
 }
 
-.img-container {
-  display: flex;
-  justify-content: center;
-}
-
-.image {
-  width: 400px;
-  margin: 5rem 0;
-}
-
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
@@ -109,6 +99,11 @@ p {
     line-height: 1;
   }
   
+}
+
+.title {
+  padding-bottom: 15px;
+  text-align: center;
 }
 .btn {
   text-transform: uppercase;
@@ -142,11 +137,8 @@ main {
   display: grid;
   place-items: center;
 }
-/*
-=============== 
-Grocery List
-===============
-*/
+
+
 .section-center {
   background: var(--clr-white);
   border-radius: var(--radius);
@@ -154,26 +146,6 @@ Grocery List
   transition: var(--transition);
   padding: 3rem 1rem;
   box-shadow: var(--dark-shadow);
-}
-
-.alert {
-  margin: 1rem 0 2rem 0;
-  height: 2rem;
-  display: grid;
-  align-items: center;
-  text-align: center;
-  font-size: 1rem;
-  border-radius: 0.25rem;
-  letter-spacing: var(--spacing);
-  text-transform: capitalize;
-}
-.alert-danger {
-  color: var(--clr-white);
-  background: var(--main-red);
-}
-.alert-success {
-  color: var(--clr-black);
-  background: var(--main-yellow);
 }
 
 .form-control {
@@ -306,6 +278,56 @@ Grocery List
 }
 .clear-btn:hover {
   color: var(--clr-white);
+}
+
+
+.alert {
+  margin: 1rem 0 2rem 0;
+  padding: 0 8px;
+  height: 2rem;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation: alert 3s;
+  transition: .4s ease;
+}
+
+.alert-danger {
+  color: var(--clr-white);
+  background: var(--main-red);
+}
+.alert-success {
+  color: var(--clr-black);
+  background: var(--success);
+}
+
+@keyframes alert {
+  0% {
+    transform: translateX(110%);
+    transition: .4s ease;
+  }
+
+  20% {
+    transform: translateX(0);
+    transition: .4s ease;
+  }
+
+  50% {
+    transform: translateX(0);
+    transition: .4s ease;
+  }
+
+  100% {
+    transform: translateX(110%);
+    transition: .4s ease;
+  }
 }
 
 @media all and (min-width: 992px) {
